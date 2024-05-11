@@ -2,26 +2,25 @@ package com.dm4nk.unidbneo4j.model;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.ToString;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
-import java.util.Set;
 import java.util.UUID;
 
-@Node
+@Node("Book")
 @Data
 @Builder
-@ToString(exclude = {"teammates"})
-public class Person {
-
+public class Book {
     @Id
     @GeneratedValue
     private UUID id;
-    private String name;
+    private String title;
+    private Integer year;
 
-    @Relationship(type = "TEAMMATE")
-    private Set<Person> teammates;
+    @Relationship(type = "WRITTEN_BY", direction = Relationship.Direction.OUTGOING)
+    private Author author;
 }
+

@@ -10,3 +10,4 @@ spring:
 logging:
   level:
     com.dm4nk: DEBUG
+    org.springframework.data.neo4j: DEBUG

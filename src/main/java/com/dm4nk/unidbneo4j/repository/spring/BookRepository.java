@@ -1,4 +1,4 @@
-package com.dm4nk.unidbneo4j.repository;
+package com.dm4nk.unidbneo4j.repository.spring;
 
 import com.dm4nk.unidbneo4j.model.Book;
 import org.springframework.data.neo4j.repository.Neo4jRepository;

@@ -1,4 +1,4 @@
-package com.dm4nk.unidbneo4j.repository;
+package com.dm4nk.unidbneo4j.repository.spring;
 
 import com.dm4nk.unidbneo4j.model.Author;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
@@ -9,6 +9,6 @@ import java.util.UUID;
 
 public interface AuthorRepository extends Neo4jRepository<Author, UUID> {
 
-    @Query("MATCH (b:Book)-[:WRITTEN_BY]->(a:Author) WHERE ф.name = $name RETURN b, a.name")
+    @Query("MATCH (b:Book)-[:WRITTEN_BY]->(a:Author) WHERE a.name = $name RETURN b, a.name")
     Optional<Author> findAuthorByName(String name);
 }

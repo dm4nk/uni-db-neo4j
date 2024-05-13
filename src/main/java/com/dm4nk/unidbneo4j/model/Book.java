@@ -1,5 +1,6 @@
 package com.dm4nk.unidbneo4j.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @Node("Book")
 @Data
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Book {
     @Id
     @GeneratedValue

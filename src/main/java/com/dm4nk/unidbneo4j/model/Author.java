@@ -1,5 +1,6 @@
 package com.dm4nk.unidbneo4j.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @Data
 @Builder
 @ToString(exclude = {"books"})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Author {
     @Id
     @GeneratedValue

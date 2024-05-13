@@ -9,11 +9,18 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static com.dm4nk.unidbneo4j.constants.Queries.GET_BOOK_BY_NAME;
+import static com.dm4nk.unidbneo4j.constants.Queries.DELETE_BOOK_ONLY_BY_TITLE;
+import static com.dm4nk.unidbneo4j.constants.Queries.GET_BOOK_YEAR;
+
 public interface BookRepository extends Neo4jRepository<Book, UUID> {
 
-    @Query("MATCH (b:Book)-[:WRITTEN_BY]->(a:Author) WHERE b.title = $title RETURN b")
+    @Query(GET_BOOK_BY_NAME)
     Optional<Book> findOneByTitle(@Param("title") String title);
 
-    @Query("MATCH (b:Book)-[:WRITTEN_BY]->(a:Author) WHERE b.year = $year RETURN b")
+    @Query(GET_BOOK_YEAR)
     List<Book> findAllByYear(@Param("year") Integer year);
+
+    @Query(value = DELETE_BOOK_ONLY_BY_TITLE, delete = true)
+    void deleteBookByTitle(@Param("title") String title);
 }
